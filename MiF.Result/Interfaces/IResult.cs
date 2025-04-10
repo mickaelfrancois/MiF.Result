@@ -2,17 +2,19 @@
 
 public interface IResult
 {
-    string? ErrorCode { get; }
-
-    string? ErrorMessage { get; }
+    public IError? Error { get; }
 
     bool IsError { get; }
 
     bool IsSuccess { get; }
 
+    bool IsErrorType<TError>() where TError : IError;
+
     static abstract Result Fail(string errorCode, string errorMessage);
 
     static abstract Result Fail(string errorMessage);
+
+    static abstract Result Fail(IError error);
 
     static abstract Result Success();
 }

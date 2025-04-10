@@ -1,28 +1,22 @@
 ﻿using MiF.Result.Interfaces;
+using MiF.Result.Models;
 
 namespace MiF.Result;
 
 
-public class Result : IResult
+public class Result : BaseResult, IResult
 {
-    public bool IsSuccess { get; }
-
-    public bool IsError => !IsSuccess;
-
-    public string? ErrorCode { get; }
-
-    public string? ErrorMessage { get; }
-
-    private Result(bool success, string? errorCode, string? errorMessage)
+    private Result(bool success, IError? error)
     {
         IsSuccess = success;
-        ErrorCode = errorCode;
-        ErrorMessage = errorMessage;
+        Error = error;
     }
 
-    public static Result Success() => new(true, null, null);
+    public static Result Success() => new(true, null);
 
-    public static Result Fail(string errorCode, string errorMessage) => new(false, errorCode, errorMessage);
+    public static Result Fail(string errorCode, string errorMessage) => new(false, new Error(errorCode, errorMessage));
 
-    public static Result Fail(string errorMessage) => new(false, null, errorMessage);
+    public static Result Fail(string errorMessage) => new(false, new Error(null, errorMessage));
+
+    public static Result Fail(IError error) => new(false, error);
 }
