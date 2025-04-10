@@ -11,7 +11,7 @@
 		<PackageProjectUrl>https://github.com/mickaelfrancois/MiF.Result</PackageProjectUrl>
 		<PackageTags>result, error, success, pattern</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>nuget_logo.png</PackageIcon>
 		<RepositoryUrl>https://github.com/mickaelfrancois/MiF.Result</RepositoryUrl>		
 		<RepositoryType>GIT</RepositoryType>		
