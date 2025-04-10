@@ -7,14 +7,19 @@
 		<Nullable>enable</Nullable>
 		<Title>$(AssemblyName)</Title>
 		<Authors>Mickaël FRANCOIS</Authors>
-		<Description>A .NET/C# implementation of the result pattern.</Description>
-		<PackageLicenseUrl>https://github.com/mickaelfrancois/MiF.Result/blob/master/License.md</PackageLicenseUrl>
+		<Description>A .NET/C# implementation of the result pattern.</Description>		
 		<PackageProjectUrl>https://github.com/mickaelfrancois/MiF.Result</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/mickaelfrancois/MiF.Result</RepositoryUrl>
-		<RepositoryType>GIT</RepositoryType>
 		<PackageTags>result, error, success, pattern</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<PackageIcon>nuget_logo.png</PackageIcon>
+		<RepositoryUrl>https://github.com/mickaelfrancois/MiF.Result</RepositoryUrl>		
+		<RepositoryType>GIT</RepositoryType>		
 		<Copyright>Mickaël FRANCOIS - 2025</Copyright>
 		<Version>1.0.0</Version>
 	</PropertyGroup>
-
+	<ItemGroup>
+		<None Include="../README.md" Pack="true" PackagePath="\"/>
+		<None Include="../nuget_logo.png" Pack="true" PackagePath="\"/>		
+	</ItemGroup>
 </Project>
