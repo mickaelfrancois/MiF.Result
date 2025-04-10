@@ -2,9 +2,7 @@
 
 public interface IResult
 {
-    string? ErrorCode { get; }
-
-    string? ErrorMessage { get; }
+    public IError? Error { get; }
 
     bool IsError { get; }
 
@@ -13,6 +11,8 @@ public interface IResult
     static abstract Result Fail(string errorCode, string errorMessage);
 
     static abstract Result Fail(string errorMessage);
+
+    static abstract Result Fail(IError error);
 
     static abstract Result Success();
 }

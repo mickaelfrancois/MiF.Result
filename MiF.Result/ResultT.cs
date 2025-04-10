@@ -1,4 +1,5 @@
 ﻿using MiF.Result.Interfaces;
+using MiF.Result.Models;
 
 namespace MiF.Result;
 
@@ -11,23 +12,23 @@ public class Result<TValue> : IResultT<TValue>
 
     public TValue? Value { get; }
 
-    public string? ErrorCode { get; }
+    public IError? Error { get; }
 
-    public string? ErrorMessage { get; }
 
-    private Result(bool success, TValue? value, string? errorCode, string? errorMessage)
+    private Result(bool success, TValue? value, IError? error)
     {
         IsSuccess = success;
         Value = value;
-        ErrorCode = errorCode;
-        ErrorMessage = errorMessage;
+        Error = error;
     }
 
-    public static Result<TValue> Success(TValue value) => new(true, value, null, null);
+    public static Result<TValue> Success(TValue value) => new(true, value, null);
 
-    public static Result<TValue> Fail(string errorCode, string errorMessage) => new(false, default, errorCode, errorMessage);
+    public static Result<TValue> Fail(string errorCode, string errorMessage) => new(false, default, new Error(errorCode, errorMessage));
 
-    public static Result<TValue> Fail(string errorMessage) => new(false, default, null, errorMessage);
+    public static Result<TValue> Fail(string errorMessage) => new(false, default, new Error(null, errorMessage));
+
+    public static Result<TValue> Fail(IError error) => new(false, default, error);
 }
 
 
