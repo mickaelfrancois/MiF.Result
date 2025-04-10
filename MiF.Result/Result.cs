@@ -19,6 +19,19 @@ public class Result : IResult
         Error = error;
     }
 
+    public bool IsErrorType<TError>() where TError : IError
+    {
+        return Error is TError;
+    }
+
+    public TError GetError<TError>() where TError : IError
+    {
+        if (Error is TError error)
+            return error;
+
+        throw new InvalidOperationException($"The error is not of type {typeof(TError).Name}");
+    }
+
     public static Result Success() => new(true, null);
 
     public static Result Fail(string errorCode, string errorMessage) => new(false, new Error(errorCode, errorMessage));

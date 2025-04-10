@@ -8,6 +8,8 @@ public interface IResult
 
     bool IsSuccess { get; }
 
+    bool IsErrorType<TError>() where TError : IError;
+
     static abstract Result Fail(string errorCode, string errorMessage);
 
     static abstract Result Fail(string errorMessage);
