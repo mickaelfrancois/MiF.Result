@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
+	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -15,6 +15,6 @@
 		<PackageTags>result, error, success, pattern</PackageTags>
 		<Copyright>Mickaël FRANCOIS - 2025</Copyright>
 		<Version>1.0.0</Version>
-  </PropertyGroup>
+	</PropertyGroup>
 
 </Project>
