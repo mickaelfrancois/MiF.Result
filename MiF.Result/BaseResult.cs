@@ -15,6 +15,20 @@ public class BaseResult
         return Error is TError;
     }
 
+    public bool TryGetError<TError>(out TError error) where TError : IError
+    {
+        if (IsErrorType<TError>())
+        {
+            error = (TError)Error!;
+            return true;
+        }
+        else
+        {
+            error = default!;
+            return false;
+        }
+    }
+
     public TError GetError<TError>() where TError : IError
     {
         if (Error is TError error)
