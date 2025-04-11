@@ -14,21 +14,21 @@ Console.WriteLine(resultTyped.Value);
 Result resultError = ProcessReturnError();
 Console.WriteLine(result.IsSuccess);
 Console.WriteLine(result.IsError);
-Console.WriteLine(resultError.Error!.ErrorMessage);
+Console.WriteLine(resultError.Error!.Message);
 
 // Get an error result with a string message and code
 Result resultError2 = ProcessReturnError2();
-Console.WriteLine(resultError2.Error!.ErrorCode + " - " + resultError2.Error!.ErrorMessage);
+Console.WriteLine(resultError2.Error!.Code + " - " + resultError2.Error!.Message);
 
 // Get an error result with a custom error object
 Result resultCustomError = ProcessReturnCustomError();
 Console.WriteLine(resultCustomError.IsErrorType<CustomError>());
 CustomError customError = resultCustomError.GetError<CustomError>();
-Console.WriteLine(customError.CorrelationId + " - " + customError.ErrorCode + " - " + customError.ErrorMessage);
+Console.WriteLine(customError.CorrelationId + " - " + customError.Code + " - " + customError.Message);
 
 // Check if the error is of type CustomError
 resultCustomError.TryGetError(out CustomError customError2);
-Console.WriteLine(customError2.CorrelationId + " - " + customError2.ErrorCode + " - " + customError2.ErrorMessage);
+Console.WriteLine(customError2.CorrelationId + " - " + customError2.Code + " - " + customError2.Message);
 
 
 Result Process()
@@ -53,14 +53,14 @@ Result ProcessReturnError2()
 
 Result ProcessReturnCustomError()
 {
-    return Result.Fail(new CustomError { ErrorCode = "Code42", ErrorMessage = "an error occurred" });
+    return Result.Fail(new CustomError { Code = "Code42", Message = "an error occurred" });
 }
 
 class CustomError : IError
 {
-    public string? ErrorCode { get; set; }
+    public string? Code { get; set; }
 
-    public string? ErrorMessage { get; set; }
+    public string? Message { get; set; }
 
     public Guid CorrelationId { get; set; } = Guid.NewGuid();
 }

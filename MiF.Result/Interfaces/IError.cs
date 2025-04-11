@@ -2,7 +2,7 @@
 
 public interface IError
 {
-    string? ErrorCode { get; set; }
+    string? Code { get; set; }
 
-    string? ErrorMessage { get; set; }
+    string? Message { get; set; }
 }
