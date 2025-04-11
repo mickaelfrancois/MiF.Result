@@ -29,7 +29,7 @@ public class ResultTests
         Assert.False(result.IsSuccess);
         Assert.True(result.IsError);
         Assert.NotNull(result.Error);
-        Assert.Equal(errorMessage, result.Error?.ErrorMessage);
+        Assert.Equal(errorMessage, result.Error?.Message);
     }
 
     [Fact]
@@ -46,8 +46,8 @@ public class ResultTests
         Assert.False(result.IsSuccess);
         Assert.True(result.IsError);
         Assert.NotNull(result.Error);
-        Assert.Equal(errorCode, result.Error?.ErrorCode);
-        Assert.Equal(errorMessage, result.Error?.ErrorMessage);
+        Assert.Equal(errorCode, result.Error?.Code);
+        Assert.Equal(errorMessage, result.Error?.Message);
     }
 
     [Fact]
@@ -151,25 +151,25 @@ public class ResultTests
     // Custom error classes for testing
     private class CustomError : IError
     {
-        public string? ErrorCode { get; set; }
-        public string? ErrorMessage { get; set; }
+        public string? Code { get; set; }
+        public string? Message { get; set; }
 
         public CustomError(string code, string message)
         {
-            ErrorCode = code;
-            ErrorMessage = message;
+            Code = code;
+            Message = message;
         }
     }
 
     private class ValidationError : IError
     {
-        public string? ErrorCode { get; set; }
-        public string? ErrorMessage { get; set; }
+        public string? Code { get; set; }
+        public string? Message { get; set; }
 
         public ValidationError(string code, string message)
         {
-            ErrorCode = code;
-            ErrorMessage = message;
+            Code = code;
+            Message = message;
         }
     }
 }

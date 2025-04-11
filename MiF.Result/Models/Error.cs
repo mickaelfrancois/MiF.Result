@@ -4,18 +4,18 @@ namespace MiF.Result.Models;
 
 public class Error : IError
 {
-    public string? ErrorCode { get; set; }
+    public string? Code { get; set; }
 
-    public string? ErrorMessage { get; set; }
+    public string? Message { get; set; }
 
     public Error(string? errorCode, string? errorMessage)
     {
-        ErrorCode = errorCode;
-        ErrorMessage = errorMessage;
+        Code = errorCode;
+        Message = errorMessage;
     }
 
     public Error(string? errorMessage)
     {
-        ErrorMessage = errorMessage;
+        Message = errorMessage;
     }
 }
